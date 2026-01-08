@@ -70,21 +70,21 @@ This portfolio features a sophisticated animation system built with **Framer Mot
 ## Animation Easing Functions
 
 All animations use optimized easing for smoothness:
-```
+\`\`\`
 - **Spring Physics**: damping: 25, stiffness: 200-400
 - **Ease Out**: [0.22, 1, 0.36, 1] for natural deceleration
 - **Ease In Out**: Standard for reversible animations
-```
+\`\`\`
 
 ## Reduced Motion Support
 
 The portfolio respects `prefers-reduced-motion`:
-```css
+\`\`\`css
 @media (prefers-reduced-motion: reduce) {
   animation-duration: 0.01ms;
   transition-duration: 0.01ms;
 }
-```
+\`\`\`
 
 All animations scale down to near-instant transitions for accessibility.
 
@@ -104,12 +104,12 @@ All animations scale down to near-instant transitions for accessibility.
 
 ## Animation Timing Hierarchy
 
-```
+\`\`\`
 Level 1 (Entry): 0.6s - Hero section title
 Level 2 (Sequence): 0.1-0.3s - Menu items, list items
 Level 3 (Micro): 0.2-0.3s - Hover states, button feedback
 Level 4 (Background): 1.5-2s - Infinite animations (scroll hint)
-```
+\`\`\`
 
 ## Files Using Animations
 
