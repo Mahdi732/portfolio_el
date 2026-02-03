@@ -23,13 +23,13 @@ export default function FloatingNav() {
       {/* Floating toggle button - top right corner */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-8 right-8 z-50 w-12 h-12 rounded-full bg-black border border-white/20 flex items-center justify-center hover:border-white/40 transition-colors"
+        className="glass fixed top-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center hover:border-gold/50 transition-colors"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
         <motion.div className="relative w-5 h-5 flex flex-col items-center justify-center gap-1.5">
           <motion.span
-            className="absolute w-5 h-px bg-white rounded-full"
+            className="absolute w-5 h-px bg-foreground rounded-full"
             initial={false}
             animate={{
               rotate: isOpen ? 45 : 0,
@@ -38,7 +38,7 @@ export default function FloatingNav() {
             transition={{ duration: 0.3 }}
           />
           <motion.span
-            className="w-5 h-px bg-white rounded-full"
+            className="w-5 h-px bg-foreground rounded-full"
             initial={false}
             animate={{
               opacity: isOpen ? 0 : 1,
@@ -46,7 +46,7 @@ export default function FloatingNav() {
             transition={{ duration: 0.2 }}
           />
           <motion.span
-            className="absolute w-5 h-px bg-white rounded-full"
+            className="absolute w-5 h-px bg-foreground rounded-full"
             initial={false}
             animate={{
               rotate: isOpen ? -45 : 0,
@@ -67,7 +67,7 @@ export default function FloatingNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-black/40 backdrop-blur-md z-40"
               transition={{ duration: 0.2 }}
             />
 
@@ -77,7 +77,7 @@ export default function FloatingNav() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 400, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 z-40 w-80 h-screen bg-black/95 backdrop-blur-xl border-l border-white/10 pt-24 px-8"
+              className="fixed top-0 right-0 z-40 w-80 h-screen bg-background/98 backdrop-blur-xl border-l border-border pt-24 px-8"
             >
               <nav className="flex flex-col gap-8">
                 {navItems.map((item, idx) => (

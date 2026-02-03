@@ -11,9 +11,9 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative bg-black border-t border-white/5 py-20 px-8 overflow-hidden">
+    <footer className="relative bg-background border-t border-border py-20 px-4 md:px-8 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gold/4 rounded-full blur-3xl opacity-25 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -24,8 +24,8 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-white mb-2">Mahdi El Rahhab</h3>
-            <p className="text-white/50 text-sm">Full Stack Developer & Creative Technologist</p>
+            <h3 className="text-2xl font-semibold text-foreground mb-2">Mahdi El Rahhab</h3>
+            <p className="text-muted-foreground text-sm">Full Stack Developer & Creative Technologist</p>
           </motion.div>
 
           {/* Navigation */}
@@ -36,14 +36,14 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-3"
           >
-            <h4 className="text-sm font-semibold text-white/80 uppercase tracking-widest">Navigation</h4>
+            <h4 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest">Navigation</h4>
             <ul className="space-y-2">
               {["about", "experience", "technologies", "contact"].map((link) => (
                 <li key={link}>
                   <motion.a
                     href={`#${link}`}
                     whileHover={{ x: 4 }}
-                    className="text-white/50 text-sm transition-colors hover:text-white"
+                    className="text-muted-foreground text-sm transition-colors hover:text-gold"
                   >
                     {link.charAt(0).toUpperCase() + link.slice(1)}
                   </motion.a>
@@ -59,7 +59,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-3"
           >
-            <h4 className="text-sm font-semibold text-white/80 uppercase tracking-widest">Social</h4>
+            <h4 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest">Social</h4>
             <ul className="space-y-2">
               {socialLinks.map((social) => (
                 <li key={social.label}>
@@ -68,7 +68,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ x: 4 }}
-                    className="text-white/50 text-sm transition-colors hover:text-white flex items-center gap-2"
+                    className="text-muted-foreground text-sm transition-colors hover:text-gold flex items-center gap-2"
                   >
                     {social.label}
                     <motion.span

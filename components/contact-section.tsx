@@ -89,15 +89,15 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="relative py-40 px-8 bg-black border-t border-white/5 overflow-hidden">
+    <section id="contact" className="relative py-32 md:py-40 px-4 md:px-8 bg-background border-t border-border overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/4 rounded-full blur-3xl opacity-25 pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto z-10">
         <ScrollReveal direction="up">
           <div className="mb-20">
             <div className="flex items-end gap-4">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">Get In Touch</h2>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground">Get In Touch</h2>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "4rem" }}

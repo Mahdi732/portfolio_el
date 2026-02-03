@@ -36,23 +36,23 @@ export default function EducationSection() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section id="education" className="relative py-40 px-8 bg-black border-t border-white/5 overflow-hidden">
+    <section id="education" className="relative py-32 md:py-40 px-4 md:px-8 bg-background border-t border-border overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/4 rounded-full blur-3xl opacity-25 pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto z-10">
         <ScrollReveal direction="up">
           <div className="mb-20">
             <div className="flex items-end gap-4">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">Education & Learning</h2>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground">Education & Learning</h2>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "4rem" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-1 bg-gradient-to-r from-white to-white/30 mb-3"
+                className="h-1.5 bg-gradient-to-r from-gold to-gold/30 mb-3"
               />
             </div>
-            <p className="text-white/60 text-lg mt-6 max-w-2xl">
+            <p className="text-muted-foreground text-lg mt-6 max-w-2xl">
               Continuous learning through formal education and hands-on project experience with the latest web
               technologies.
             </p>
@@ -67,12 +67,12 @@ export default function EducationSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
                 whileHover={{ y: -6 }}
-                className="relative bg-gradient-to-br from-white/8 to-white/2 border border-white/15 rounded-xl p-8 hover:bg-white/10 hover:border-white/30 transition-all group overflow-hidden"
+                className="glass rounded-lg p-8 hover:bg-white/8 hover:border-gold/30 transition-all group overflow-hidden"
               >
                 {/* Background gradient on hover */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/5 opacity-0 pointer-events-none"
-                  whileHover={{ opacity: 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-r from-gold/10 via-transparent to-gold/5 opacity-0 pointer-events-none"
+                  whileHover={{ opacity: 0.3 }}
                   transition={{ duration: 0.3 }}
                 />
 

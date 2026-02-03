@@ -48,7 +48,7 @@ export default function ProjectsGrid() {
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null)
 
   return (
-    <section id="projects" className="relative py-40 px-8 bg-black overflow-hidden">
+    <section id="projects" className="relative py-32 md:py-40 px-4 md:px-8 bg-background overflow-hidden border-t border-border">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -58,12 +58,12 @@ export default function ProjectsGrid() {
           className="mb-20"
         >
           <div className="flex items-end gap-4">
-            <h2 className="text-6xl md:text-7xl font-bold text-white">Selected Work</h2>
+            <h2 className="text-6xl md:text-7xl font-semibold text-foreground">Selected Work</h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "4rem" }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-1 bg-white/40 mb-3"
+              className="h-1.5 bg-gradient-to-r from-gold to-gold/30 mb-3"
             />
           </div>
           <motion.p
@@ -71,7 +71,7 @@ export default function ProjectsGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-white/50 mt-6 text-lg max-w-2xl"
+            className="text-muted-foreground mt-6 text-lg max-w-2xl"
           >
             A curated selection of recent projects showcasing design, development, and problem-solving.
           </motion.p>

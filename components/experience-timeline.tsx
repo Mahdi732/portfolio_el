@@ -47,11 +47,11 @@ const ExperienceCard = ({ item, index }: { item: (typeof experiences)[0]; index:
     >
       {/* Main card */}
       <motion.div
-        whileHover={{ y: -8 }}
-        className="relative bg-gradient-to-br from-white/8 to-white/2 border border-white/15 rounded-2xl p-8 md:p-12 overflow-hidden"
+        whileHover={{ y: -6 }}
+        className="glass rounded-lg p-8 md:p-10 overflow-hidden"
       >
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gold/5 via-transparent to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Content */}
         <div className="relative z-10">
@@ -61,16 +61,16 @@ const ExperienceCard = ({ item, index }: { item: (typeof experiences)[0]; index:
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: index * 0.1 + 0.2 }}
-              className="inline-block px-3 py-1 mb-4 bg-white/10 border border-white/20 rounded-full"
+              className="inline-block px-3 py-1.5 mb-4 bg-gold/10 border border-gold/30 rounded-full"
             >
-              <span className="text-xs font-semibold text-white/70 uppercase tracking-widest">{item.type}</span>
+              <span className="text-xs font-semibold text-gold uppercase tracking-widest">{item.type}</span>
             </motion.div>
 
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ delay: index * 0.1 + 0.1 }}
-              className="text-3xl md:text-4xl font-bold text-white mb-2"
+              className="text-3xl md:text-4xl font-semibold text-foreground mb-2"
             >
               {item.role}
             </motion.h3>

@@ -67,33 +67,33 @@ const TechCard = ({ tech, idx }: { tech: (typeof technologies)[0]; idx: number }
       className="relative group"
     >
       <motion.div
-        whileHover={{ y: -8, scale: 1.02 }}
-        className="relative h-full bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-5 cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all"
+        whileHover={{ y: -6, scale: 1.02 }}
+        className="glass rounded-lg p-5 cursor-pointer hover:bg-white/8 hover:border-gold/30 transition-all h-full"
       >
         {/* Glow effect */}
         <motion.div
-          className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 pointer-events-none"
-          animate={{ opacity: isHovered ? 0.5 : 0 }}
+          className="absolute inset-0 rounded-lg bg-gradient-to-r from-gold/20 via-transparent to-transparent opacity-0 pointer-events-none"
+          animate={{ opacity: isHovered ? 0.3 : 0 }}
           transition={{ duration: 0.3 }}
         />
 
         {/* Content */}
         <div className="relative z-10">
-          <h3 className="font-semibold text-white text-lg mb-1">{tech.name}</h3>
-          <p className="text-xs text-white/50 mb-4 uppercase tracking-wider">{tech.category}</p>
+          <h3 className="font-semibold text-foreground text-lg mb-1">{tech.name}</h3>
+          <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider font-medium">{tech.category}</p>
 
           {/* Proficiency bar */}
           <div className="mb-4">
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs text-white/60">Proficiency</label>
-              <span className="text-xs font-semibold text-white/80">{tech.proficiency}%</span>
+              <label className="text-xs text-muted-foreground font-medium">Proficiency</label>
+              <span className="text-xs font-semibold text-gold">{tech.proficiency}%</span>
             </div>
-            <div className="relative w-full h-2 bg-white/10 rounded-full overflow-hidden">
+            <div className="relative w-full h-2.5 bg-secondary rounded-full overflow-hidden border border-border/50">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${tech.proficiency}%` }}
                 transition={{ delay: idx * 0.05 + 0.2, duration: 0.8, ease: "easeOut" }}
-                className="h-full bg-gradient-to-r from-white to-white/60 rounded-full"
+                className="h-full bg-gradient-to-r from-gold to-gold-light rounded-full"
               />
             </div>
           </div>

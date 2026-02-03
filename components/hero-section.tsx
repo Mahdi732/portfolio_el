@@ -16,10 +16,12 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-screen bg-black pt-20 pb-32 px-8 overflow-hidden flex items-center justify-center"
+      className="relative w-full min-h-screen bg-background pt-24 pb-32 px-4 md:px-8 overflow-hidden flex items-center justify-center border-b border-border"
     >
-      <motion.div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <motion.div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      {/* Premium background gradient elements */}
+      <motion.div className="absolute top-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <motion.div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/3 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <motion.div className="absolute top-1/2 right-1/4 w-64 h-64 bg-white/3 rounded-full blur-2xl" />
 
       {/* Main content grid with asymmetric layout */}
       <motion.div style={{ opacity }} className="relative z-10 w-full max-w-7xl">
@@ -36,19 +38,19 @@ export default function HeroSection() {
                 initial={{ width: 0 }}
                 animate={{ width: "3rem" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-1 bg-gradient-to-r from-white to-white/30"
+                className="h-1.5 bg-gradient-to-r from-gold to-gold/30"
               />
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight tracking-tight"
               >
-                Building
+                Full-Stack
                 <br />
-                Interactive
+                Developer &
                 <br />
-                <span className="text-white/40">Experiences</span>
+                <span className="bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent">Innovator</span>
               </motion.h1>
             </div>
 
@@ -56,33 +58,27 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg text-white/60 leading-relaxed max-w-md"
+              className="text-lg text-muted-foreground leading-relaxed max-w-md body-large"
             >
-              Full-stack developer creating beautiful, performant web applications. Expert in React, Next.js, Node.js,
-              and advanced animations with Framer Motion.
+              Crafting elegant web experiences with modern technologies. Specializing in React, Next.js, Node.js, and
+              premium animations. Building products that perform, impress, and scale.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex items-center gap-2 text-white/50"
+              className="flex items-center gap-2 text-muted-foreground text-sm font-medium"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                 />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
               </svg>
-              <span>Safi, Maroc</span>
+              <span>Based in Safi, Morocco</span>
             </motion.div>
 
             <motion.a
@@ -90,12 +86,12 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              whileHover={{ x: 8 }}
-              className="inline-flex items-center gap-3 pt-4 text-white group"
+              whileHover={{ x: 6 }}
+              className="inline-flex items-center gap-3 pt-6 text-foreground font-medium group text-sm"
             >
-              <motion.span className="text-lg font-medium">View tech stack</motion.span>
+              <span>Explore my tech stack</span>
               <motion.svg
-                className="w-6 h-6"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
