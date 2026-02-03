@@ -4,10 +4,10 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
 const stats = [
-  { value: "50+", label: "Projects Completed", icon: "📦" },
-  { value: "5+", label: "Years Experience", icon: "⏱️" },
-  { value: "100%", label: "Client Satisfaction", icon: "⭐" },
-  { value: "2", label: "Active Internships", icon: "🚀" },
+  { value: "50+", label: "Projects Completed" },
+  { value: "5+", label: "Years Experience" },
+  { value: "100%", label: "Client Satisfaction" },
+  { value: "2", label: "Active Internships" },
 ]
 
 export default function PortfolioStats() {
@@ -69,13 +69,13 @@ export default function PortfolioStats() {
 
               {/* Card */}
               <div className="glass rounded-lg p-6 md:p-8 text-center relative z-10 group-hover:bg-white/8 transition-all h-full flex flex-col items-center justify-center">
-                {/* Icon */}
+                {/* Icon placeholder - elegant line */}
                 <motion.div
-                  className="text-4xl md:text-5xl mb-4"
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
+                  className="w-12 h-12 rounded-full border-2 border-gold/40 flex items-center justify-center mb-4 group-hover:border-gold transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {stat.icon}
+                  <div className="w-6 h-1 bg-gold/60 group-hover:bg-gold transition-colors" />
                 </motion.div>
 
                 {/* Value */}
