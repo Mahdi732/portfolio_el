@@ -4,10 +4,10 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
 const stats = [
-  { value: "50+", label: "Projects Completed" },
-  { value: "5+", label: "Years Experience" },
-  { value: "100%", label: "Client Satisfaction" },
-  { value: "2", label: "Active Internships" },
+  { value: "15+", label: "Projects Built" },
+  { value: "30+", label: "Technologies Mastered" },
+  { value: "2", label: "Major Internships" },
+  { value: "Full-Stack", label: "Development Focus" },
 ]
 
 export default function PortfolioStats() {
