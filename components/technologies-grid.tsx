@@ -53,6 +53,8 @@ const categories = [
   "Tools",
 ]
 
+const ITEMS_PER_PAGE = 9
+
 const TechCard = ({ tech, idx }: { tech: (typeof technologies)[0]; idx: number }) => {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -101,15 +103,15 @@ const TechCard = ({ tech, idx }: { tech: (typeof technologies)[0]; idx: number }
           {/* Interest bar */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs text-white/60">Interest</label>
-              <span className="text-xs font-semibold text-white/80">{tech.interest}%</span>
+              <label className="text-xs text-muted-foreground font-medium">Interest</label>
+              <span className="text-xs font-semibold text-gold">{tech.interest}%</span>
             </div>
-            <div className="relative w-full h-2 bg-white/10 rounded-full overflow-hidden">
+            <div className="relative w-full h-2.5 bg-secondary rounded-full overflow-hidden border border-border/50">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${tech.interest}%` }}
                 transition={{ delay: idx * 0.05 + 0.3, duration: 0.8, ease: "easeOut" }}
-                className="h-full bg-gradient-to-r from-white/70 to-white/30 rounded-full"
+                className="h-full bg-gradient-to-r from-slate/70 to-slate/30 rounded-full"
               />
             </div>
           </div>
@@ -128,15 +130,26 @@ const TechCard = ({ tech, idx }: { tech: (typeof technologies)[0]; idx: number }
 
 export default function TechnologiesGrid() {
   const [activeCategory, setActiveCategory] = useState("All")
+  const [currentPage, setCurrentPage] = useState(1)
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   const filteredTechs =
     activeCategory === "All" ? technologies : technologies.filter((tech) => tech.category === activeCategory)
 
+  const totalPages = Math.ceil(filteredTechs.length / ITEMS_PER_PAGE)
+  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE
+  const endIdx = startIdx + ITEMS_PER_PAGE
+  const paginatedTechs = filteredTechs.slice(startIdx, endIdx)
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category)
+    setCurrentPage(1)
+  }
+
   return (
-    <section id="technologies" className="relative py-40 px-8 bg-black border-t border-white/5 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-20 pointer-events-none" />
+    <section id="technologies" className="relative py-32 md:py-40 px-4 md:px-8 bg-background border-t border-border overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gold/3 to-transparent opacity-20 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto z-10">
         <motion.div
@@ -147,7 +160,7 @@ export default function TechnologiesGrid() {
           className="mb-20"
         >
           <div className="flex items-end gap-4 mb-12">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">Tech Stack</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground">Tech Stack</h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "4rem" }}
@@ -156,9 +169,8 @@ export default function TechnologiesGrid() {
             />
           </div>
 
-          <p className="text-white/60 text-lg max-w-2xl">
-            A comprehensive collection of programming languages, frameworks, and tools I've mastered. Each technology is
-            rated by proficiency and personal interest level.
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            A curated collection of my top technologies rated by proficiency and passion. Discover the tools that power my best work.
           </p>
         </motion.div>
 
@@ -166,7 +178,7 @@ export default function TechnologiesGrid() {
           {categories.map((category, idx) => (
             <motion.button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryChange(category)}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
@@ -175,8 +187,8 @@ export default function TechnologiesGrid() {
               whileTap={{ scale: 0.95 }}
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                 activeCategory === category
-                  ? "bg-white text-black shadow-lg shadow-white/20"
-                  : "border border-white/30 text-white/70 hover:border-white/60 hover:text-white/90"
+                  ? "bg-gold text-background shadow-lg shadow-gold/30"
+                  : "border border-border bg-secondary text-muted-foreground hover:border-gold/50 hover:text-foreground"
               }`}
             >
               {category}
@@ -189,14 +201,59 @@ export default function TechnologiesGrid() {
           ref={containerRef}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12"
         >
           <AnimatePresence mode="popLayout">
-            {filteredTechs.map((tech, idx) => (
+            {paginatedTechs.map((tech, idx) => (
               <TechCard key={tech.name} tech={tech} idx={idx} />
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center justify-center gap-2 flex-wrap"
+          >
+            <motion.button
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 rounded-lg border border-border bg-secondary disabled:opacity-50 disabled:cursor-not-allowed hover:border-gold/50 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Previous
+            </motion.button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <motion.button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 rounded-lg font-medium transition-all ${
+                  currentPage === page
+                    ? "bg-gold text-background"
+                    : "border border-border bg-secondary text-muted-foreground hover:border-gold/50"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {page}
+              </motion.button>
+            ))}
+
+            <motion.button
+              onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 rounded-lg border border-border bg-secondary disabled:opacity-50 disabled:cursor-not-allowed hover:border-gold/50 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Next
+            </motion.button>
+          </motion.div>
+        )}
 
         {/* Empty state */}
         <AnimatePresence>

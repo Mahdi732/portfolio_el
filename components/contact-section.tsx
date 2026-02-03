@@ -105,7 +105,7 @@ export default function ContactSection() {
                 className="h-1 bg-gradient-to-r from-white to-white/30 mb-3"
               />
             </div>
-            <p className="text-white/60 mt-6 text-lg max-w-2xl">
+            <p className="text-muted-foreground mt-6 text-lg max-w-2xl">
               Have a project in mind? Let's discuss opportunities and create something amazing together. Reach out
               through the form or connect on social media.
             </p>
@@ -118,7 +118,7 @@ export default function ContactSection() {
             <div className="space-y-12">
               {[
                 { label: "Email", value: "elmahdirahhab@gmail.com", href: "mailto:elmahdirahhab@gmail.com" },
-                { label: "Location", value: "Cergy, France", href: "#" },
+                { label: "Location", value: "Safi, Morocco", href: "#" },
               ].map((item, idx) => (
                 <motion.div
                   key={item.label}
@@ -127,11 +127,11 @@ export default function ContactSection() {
                   transition={{ delay: idx * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <p className="text-white/60 text-xs uppercase tracking-widest mb-3">{item.label}</p>
+                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-3 font-medium">{item.label}</p>
                   <motion.a
                     href={item.href}
                     whileHover={{ x: 8 }}
-                    className="text-white/80 hover:text-white transition-colors text-xl font-semibold"
+                    className="text-foreground hover:text-gold transition-colors text-xl font-semibold"
                   >
                     {item.value}
                   </motion.a>
@@ -144,9 +144,9 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="pt-12 border-t border-white/10"
+                className="pt-12 border-t border-border"
               >
-                <p className="text-white/60 text-xs uppercase tracking-widest mb-6">Connect</p>
+                <p className="text-muted-foreground text-xs uppercase tracking-widest mb-6 font-medium">Connect</p>
                 <div className="flex flex-wrap gap-4">
                   {socialLinks.map((social, idx) => (
                     <motion.a

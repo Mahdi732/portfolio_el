@@ -3,6 +3,7 @@
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import AboutSection from "@/components/about-section"
+import PortfolioStats from "@/components/portfolio-stats"
 import ExperienceTimeline from "@/components/experience-timeline"
 import ProjectsGrid from "@/components/projects-grid"
 import TechnologiesGrid from "@/components/technologies-grid"
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <AboutSection />
+      <PortfolioStats />
       <ExperienceTimeline />
       <ProjectsGrid />
       <TechnologiesGrid />
