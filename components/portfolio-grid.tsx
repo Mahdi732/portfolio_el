@@ -8,25 +8,21 @@ const portfolioItems = [
     id: 1,
     title: "Design System",
     gradient: "from-pink-300 via-cyan-200 to-lime-200",
-    icon: "📐",
   },
   {
     id: 2,
     title: "Motion Design",
     gradient: "from-cyan-300 via-lime-200 to-pink-200",
-    icon: "🎬",
   },
   {
     id: 3,
     title: "UI Components",
     gradient: "from-yellow-200 via-pink-300 to-cyan-200",
-    icon: "🎨",
   },
   {
     id: 4,
     title: "Brand Identity",
     gradient: "from-lime-300 via-cyan-200 to-pink-300",
-    icon: "✨",
   },
 ]
 

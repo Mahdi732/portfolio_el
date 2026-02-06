@@ -5,10 +5,9 @@ import { motion } from "framer-motion"
 interface PortfolioCardProps {
   title: string
   gradient: string
-  icon: string
 }
 
-export default function PortfolioCard({ title, gradient, icon }: PortfolioCardProps) {
+export default function PortfolioCard({ title, gradient }: PortfolioCardProps) {
   return (
     <motion.div
       whileHover={{ y: -8, scale: 1.02 }}
@@ -23,16 +22,7 @@ export default function PortfolioCard({ title, gradient, icon }: PortfolioCardPr
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
-        <motion.div
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-          className="text-5xl mb-4"
-        >
-          {icon}
-        </motion.div>
-
-        <motion.h3 initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }} className="text-xl font-bold text-slate-900">
+        <motion.h3 initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }} className="text-2xl font-bold text-slate-900">
           {title}
         </motion.h3>
 

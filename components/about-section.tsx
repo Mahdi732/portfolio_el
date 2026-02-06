@@ -5,9 +5,9 @@ import { ScrollReveal } from "./scroll-reveal"
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-40 px-8 bg-black border-t border-white/5 overflow-hidden">
+    <section id="about" className="relative py-32 md:py-40 px-4 md:px-8 bg-background border-t border-border overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/4 rounded-full blur-3xl opacity-30 pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -19,9 +19,9 @@ export default function AboutSection() {
                   initial={{ width: 0 }}
                   whileInView={{ width: "3rem" }}
                   transition={{ duration: 0.8 }}
-                  className="h-1 bg-gradient-to-r from-white to-white/30 mb-6"
+                  className="h-1.5 bg-gradient-to-r from-gold to-gold/30 mb-6"
                 />
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">About Me</h2>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground">About Me</h2>
               </div>
 
               <p className="text-lg text-white/70 leading-relaxed max-w-lg">
@@ -37,11 +37,11 @@ export default function AboutSection() {
               </p>
 
               <motion.div className="flex flex-col sm:flex-row gap-4 pt-8">
-                <motion.a
+            <motion.a
                   href="#contact"
                   whileHover={{ scale: 1.05, x: 4 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-white text-black font-semibold hover:bg-white/90 transition-all inline-flex items-center gap-2 rounded-lg"
+                  className="px-8 py-3 bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all inline-flex items-center gap-2 rounded-md border border-border"
                 >
                   Get In Touch
                   <motion.span
@@ -69,12 +69,12 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-white/8 to-white/2 border border-white/15 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all group"
+                  className="glass rounded-lg p-6 hover:bg-white/8 hover:border-gold/20 transition-all duration-300 group"
                 >
-                  <p className="text-4xl font-bold text-white mb-2 group-hover:text-white/90 transition-colors">
+                  <p className="text-4xl font-semibold text-foreground mb-2 group-hover:text-gold transition-colors">
                     {stat.number}
                   </p>
-                  <p className="text-white/60 text-sm">{stat.label}</p>
+                  <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
                 </motion.div>
               ))}
             </div>

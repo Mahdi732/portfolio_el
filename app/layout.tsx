@@ -49,7 +49,7 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body className={`font-sans antialiased bg-black text-white`}>
+      <body className={`${_geist.className} font-sans antialiased bg-background text-foreground selection:bg-gold selection:text-background`}>
         {children}
         <Analytics />
       </body>
