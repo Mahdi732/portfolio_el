@@ -1,0 +1,70 @@
+name: Delete Stale Branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (do not actually delete branches)'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  delete-branches:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Delete branches except main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Fetching all branches..."
+          git fetch --all
+          
+          echo ""
+          echo "Current branches in repository:"
+          git branch -r | grep -v '\->' | sed 's/origin\///'
+          
+          echo ""
+          echo "Branches to delete (excluding main and current branch):"
+          
+          # Get current branch
+          CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Current branch: $CURRENT_BRANCH"
+          
+          # Get all remote branches except main and current
+          BRANCHES_TO_DELETE=$(git branch -r | grep -v '\->' | sed 's/origin\///' | grep -v '^main$' | grep -v "^$CURRENT_BRANCH$")
+          
+          if [ -z "$BRANCHES_TO_DELETE" ]; then
+            echo "No branches to delete."
+            exit 0
+          fi
+          
+          echo "$BRANCHES_TO_DELETE"
+          
+          if [ "${{ inputs.dry_run }}" = "false" ]; then
+            echo ""
+            echo "Deleting branches..."
+            for branch in $BRANCHES_TO_DELETE; do
+              branch=$(echo "$branch" | xargs)  # trim whitespace
+              if [ ! -z "$branch" ]; then
+                echo "Deleting: $branch"
+                git push origin --delete "$branch" || echo "Failed to delete $branch"
+              fi
+            done
+            echo "Branch deletion complete!"
+          else
+            echo ""
+            echo "DRY RUN: No branches were actually deleted."
+            echo "Set dry_run to 'false' to actually delete branches."
+          fi
